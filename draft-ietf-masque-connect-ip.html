@@ -652,6 +652,11 @@ hr {
   font-weight: bold;
   min-width: 7em;
 }
+.references dt:target::before {
+  content: "⇒";
+  width: 15px;
+  margin: 0 10px 0 -25px;
+}
 .references dd {
   margin-left: 8em;
   overflow: auto;
@@ -1045,7 +1050,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Pauly, et al.</td>
-<td class="center">Expires 12 January 2023</td>
+<td class="center">Expires 25 January 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1058,12 +1063,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-masque-connect-ip-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-07-11" class="published">11 July 2022</time>
+<time datetime="2022-07-24" class="published">24 July 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-01-12">12 January 2023</time></dd>
+<dd class="expires"><time datetime="2023-01-25">25 January 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1131,7 +1136,7 @@ being limited to just TCP like CONNECT or UDP like CONNECT-UDP.<a href="#section
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 12 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1798,15 +1803,49 @@ receives a set of local addresses, and can send to any remote server through
 the proxy. Such VPN setups can be either full-tunnel or split-tunnel.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <span id="name-vpn-tunnel-setup"></span><div id="diagram-tunnel">
 <figure id="figure-7">
-          <div class="alignLeft art-text artwork" id="section-8.1-2.1">
-<pre>
-+--------+ IP A         IP B +--------+              +---&gt; IP D
-|        |-------------------|        | IP C         |
-| Client | IP Subnet C &lt;-&gt; * | Server |--------------+---&gt; IP E
-|        |-------------------|        |              |
-+--------+                   +--------+              +---&gt; IP ...
-
-</pre>
+          <div id="section-8.1-2.1">
+            <div class="alignLeft art-svg artwork" id="section-8.1-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="128" width="528" viewBox="0 0 528 128" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+                <path d="M 8,32 L 8,96" fill="none" stroke="black"></path>
+                <path d="M 80,32 L 80,96" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 240,96" fill="none" stroke="black"></path>
+                <path d="M 312,32 L 312,96" fill="none" stroke="black"></path>
+                <path d="M 432,32 L 432,96" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 80,32" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 312,32" fill="none" stroke="black"></path>
+                <path d="M 432,32 L 464,32" fill="none" stroke="black"></path>
+                <path d="M 88,48 L 232,48" fill="none" stroke="black"></path>
+                <path d="M 320,64 L 464,64" fill="none" stroke="black"></path>
+                <path d="M 88,80 L 232,80" fill="none" stroke="black"></path>
+                <path d="M 8,96 L 80,96" fill="none" stroke="black"></path>
+                <path d="M 240,96 L 312,96" fill="none" stroke="black"></path>
+                <path d="M 432,96 L 464,96" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="472,96 460,90.4 460,101.6" fill="black" transform="rotate(0,464,96)"></polygon>
+                <polygon class="arrowhead" points="472,64 460,58.4 460,69.6" fill="black" transform="rotate(0,464,64)"></polygon>
+                <polygon class="arrowhead" points="472,32 460,26.4 460,37.6" fill="black" transform="rotate(0,464,32)"></polygon>
+                <g class="text">
+                  <text x="100" y="36">IP</text>
+                  <text x="120" y="36">A</text>
+                  <text x="204" y="36">IP</text>
+                  <text x="224" y="36">B</text>
+                  <text x="484" y="36">IP</text>
+                  <text x="504" y="36">D</text>
+                  <text x="332" y="52">IP</text>
+                  <text x="352" y="52">C</text>
+                  <text x="44" y="68">Client</text>
+                  <text x="100" y="68">IP</text>
+                  <text x="140" y="68">Subnet</text>
+                  <text x="176" y="68">C</text>
+                  <text x="200" y="68">&lt;-&gt;</text>
+                  <text x="224" y="68">?</text>
+                  <text x="276" y="68">Server</text>
+                  <text x="484" y="68">IP</text>
+                  <text x="504" y="68">E</text>
+                  <text x="484" y="100">IP</text>
+                  <text x="512" y="100">...</text>
+                </g>
+              </svg><a href="#section-8.1-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
 <a href="#name-vpn-tunnel-setup" class="selfRef">VPN Tunnel Setup</a>
@@ -1910,15 +1949,39 @@ transmitting packets. A similar approach could be used for any other IP protocol
 that isn't easily proxied with existing HTTP methods, such as ICMP, ESP, etc.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
 <span id="name-proxied-flow-setup"></span><div id="diagram-flow">
 <figure id="figure-10">
-          <div class="alignLeft art-text artwork" id="section-8.2-2.1">
-<pre>
-+--------+ IP A         IP B +--------+
-|        |-------------------|        | IP C
-| Client |    IP C &lt;-&gt; D     | Server |---------&gt; IP D
-|        |-------------------|        |
-+--------+                   +--------+
-
-</pre>
+          <div id="section-8.2-2.1">
+            <div class="alignLeft art-svg artwork" id="section-8.2-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="128" width="440" viewBox="0 0 440 128" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+                <path d="M 8,32 L 8,96" fill="none" stroke="black"></path>
+                <path d="M 80,32 L 80,96" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 240,96" fill="none" stroke="black"></path>
+                <path d="M 312,32 L 312,96" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 80,32" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 312,32" fill="none" stroke="black"></path>
+                <path d="M 88,48 L 232,48" fill="none" stroke="black"></path>
+                <path d="M 320,64 L 392,64" fill="none" stroke="black"></path>
+                <path d="M 88,80 L 232,80" fill="none" stroke="black"></path>
+                <path d="M 8,96 L 80,96" fill="none" stroke="black"></path>
+                <path d="M 240,96 L 312,96" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="400,64 388,58.4 388,69.6" fill="black" transform="rotate(0,392,64)"></polygon>
+                <g class="text">
+                  <text x="100" y="36">IP</text>
+                  <text x="120" y="36">A</text>
+                  <text x="204" y="36">IP</text>
+                  <text x="224" y="36">B</text>
+                  <text x="332" y="52">IP</text>
+                  <text x="352" y="52">C</text>
+                  <text x="44" y="68">Client</text>
+                  <text x="124" y="68">IP</text>
+                  <text x="144" y="68">C</text>
+                  <text x="168" y="68">&lt;-&gt;</text>
+                  <text x="192" y="68">D</text>
+                  <text x="276" y="68">Server</text>
+                  <text x="412" y="68">IP</text>
+                  <text x="432" y="68">D</text>
+                </g>
+              </svg><a href="#section-8.2-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
 <a href="#name-proxied-flow-setup" class="selfRef">Proxied Flow Setup</a>
@@ -1999,15 +2062,46 @@ a variant of the proxied flow, but highlights how IP-level proxying can enable
 new capabilities even for TCP and UDP.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
 <span id="name-proxied-connection-racing-s"></span><div id="diagram-racing">
 <figure id="figure-12">
-          <div class="alignLeft art-text artwork" id="section-8.3-2.1">
-<pre>
-+--------+ IP A         IP B +--------+ IP C
-|        |-------------------|        |&lt;------------&gt; IP E
-| Client |  IP C&lt;-&gt;E, D&lt;-&gt;F  | Server |
-|        |-------------------|        |&lt;------------&gt; IP F
-+--------+                   +--------+ IP D
-
-</pre>
+          <div id="section-8.3-2.1">
+            <div class="alignLeft art-svg artwork" id="section-8.3-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="128" width="472" viewBox="0 0 472 128" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+                <path d="M 8,32 L 8,96" fill="none" stroke="black"></path>
+                <path d="M 80,32 L 80,96" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 240,96" fill="none" stroke="black"></path>
+                <path d="M 312,32 L 312,96" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 80,32" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 312,32" fill="none" stroke="black"></path>
+                <path d="M 88,48 L 232,48" fill="none" stroke="black"></path>
+                <path d="M 320,48 L 424,48" fill="none" stroke="black"></path>
+                <path d="M 88,80 L 232,80" fill="none" stroke="black"></path>
+                <path d="M 320,80 L 424,80" fill="none" stroke="black"></path>
+                <path d="M 8,96 L 80,96" fill="none" stroke="black"></path>
+                <path d="M 240,96 L 312,96" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="432,80 420,74.4 420,85.6" fill="black" transform="rotate(0,424,80)"></polygon>
+                <polygon class="arrowhead" points="432,48 420,42.4 420,53.6" fill="black" transform="rotate(0,424,48)"></polygon>
+                <polygon class="arrowhead" points="328,80 316,74.4 316,85.6" fill="black" transform="rotate(180,320,80)"></polygon>
+                <polygon class="arrowhead" points="328,48 316,42.4 316,53.6" fill="black" transform="rotate(180,320,48)"></polygon>
+                <g class="text">
+                  <text x="100" y="36">IP</text>
+                  <text x="120" y="36">A</text>
+                  <text x="204" y="36">IP</text>
+                  <text x="224" y="36">B</text>
+                  <text x="332" y="36">IP</text>
+                  <text x="352" y="36">C</text>
+                  <text x="444" y="52">IP</text>
+                  <text x="464" y="52">E</text>
+                  <text x="44" y="68">Client</text>
+                  <text x="108" y="68">IP</text>
+                  <text x="148" y="68">C&lt;-&gt;E,</text>
+                  <text x="200" y="68">D&lt;-&gt;F</text>
+                  <text x="276" y="68">Server</text>
+                  <text x="444" y="84">IP</text>
+                  <text x="464" y="84">F</text>
+                  <text x="332" y="100">IP</text>
+                  <text x="352" y="100">D</text>
+                </g>
+              </svg><a href="#section-8.3-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
 <a href="#name-proxied-connection-racing-s" class="selfRef">Proxied Connection Racing Setup</a>

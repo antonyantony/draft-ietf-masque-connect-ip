@@ -5,12 +5,12 @@
 MASQUE                                                     T. Pauly, Ed.
 Internet-Draft                                                Apple Inc.
 Intended status: Standards Track                             D. Schinazi
-Expires: 12 January 2023                               A. Chernyakhovsky
+Expires: 25 January 2023                               A. Chernyakhovsky
                                                               Google LLC
                                                            M. Kuehlewind
                                                            M. Westerlund
                                                                 Ericsson
-                                                            11 July 2022
+                                                            24 July 2022
 
 
                       IP Proxying Support for HTTP
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 January 2023.
+   This Internet-Draft will expire on 25 January 2023.
 
 Copyright Notice
 
@@ -570,7 +570,7 @@ Table of Contents
 
    +--------+ IP A         IP B +--------+              +---> IP D
    |        |-------------------|        | IP C         |
-   | Client | IP Subnet C <-> * | Server |--------------+---> IP E
+   | Client | IP Subnet C <-> ? | Server |--------------+---> IP E
    |        |-------------------|        |              |
    +--------+                   +--------+              +---> IP ...
 
