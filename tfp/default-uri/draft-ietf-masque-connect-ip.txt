@@ -170,7 +170,7 @@ Table of Contents
       "ipproto" and MAY contain other variables.  If the "target" or
       "ipproto" variables are included, their values MUST NOT be empty.
       Clients can instead use "*" to indicate wildcard or no-preference
-      values, see Section 4.1..
+      values, see Section 4.1.
 
    *  The URI Template MUST NOT contain any non-ASCII unicode characters
       and MUST only contain ASCII characters in the range 0x21-0x7E
