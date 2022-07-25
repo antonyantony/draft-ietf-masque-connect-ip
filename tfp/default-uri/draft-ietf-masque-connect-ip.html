@@ -1309,7 +1309,7 @@ works to exclude it in the syntax.<a href="#section-3-1" class="pilcrow">¶</a><
 <figure id="figure-1">
         <div class="alignLeft art-text artwork" id="section-3-3.1">
 <pre>
-https://example.org/masque/{target}/{ipproto}/
+https://example.org/.well-known/masque/ip/{target}/{ipproto}/
 https://proxy.example.org:4443/masque/ip?t={target}&amp;i={ipproto}
 https://proxy.example.org:4443/masque/ip{?target,ipproto}
 https://masque.example.org/?user=bob
@@ -1331,9 +1331,9 @@ authority and path components.<a href="#section-3-5.2" class="pilcrow">¶</a>
         <li class="normal" id="section-3-5.4">All template variables <span class="bcp14">MUST</span> be within the path or query components of the URI.<a href="#section-3-5.4" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-3-5.5">The URI template <span class="bcp14">MAY</span> contain the two variables "target" and "ipproto" and <span class="bcp14">MAY</span>
-contain other variables. If the "target" and "ipproto" variables are included
-as path components, their values <span class="bcp14">MUST NOT</span> be empty, but instead use "*" to
-indicate wildcard or no-preference values.<a href="#section-3-5.5" class="pilcrow">¶</a>
+contain other variables. If the "target" or "ipproto" variables are included,
+their values <span class="bcp14">MUST NOT</span> be empty. Clients can instead use "*" to indicate
+wildcard or no-preference values, see <a href="#scope" class="xref">Section 4.1</a>..<a href="#section-3-5.5" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-3-5.6">The URI Template <span class="bcp14">MUST NOT</span> contain any non-ASCII unicode characters and <span class="bcp14">MUST</span>
 only contain ASCII characters in the range 0x21-0x7E inclusive (note that
@@ -1353,7 +1353,7 @@ sending it to the IP proxy.<a href="#section-3-6" class="pilcrow">¶</a></p>
 <p id="section-3-7">As with CONNECT-UDP, some client configurations for CONNECT-IP proxies will only
 allow the user to configure the proxy host and proxy port. Clients with such limitations
 <span class="bcp14">MAY</span> attempt to access IP proxying capabilities using the default template, which is
-defined as: "https://$PROXY_HOST:$PROXY_PORT/.well-known/masque/udp/{target}/{ipproto}/",
+defined as: "https://$PROXY_HOST:$PROXY_PORT/.well-known/masque/ip/{target}/{ipproto}/",
 where $PROXY_HOST and $PROXY_PORT are the configured host and port of the IP proxy,
 respectively. IP proxy deployments <span class="bcp14">SHOULD</span> offer service at this location if they need
 to interoperate with such clients.<a href="#section-3-7" class="pilcrow">¶</a></p>
@@ -2267,7 +2267,7 @@ Token Registry maintained at
 URI suffix in the "Well-Known URIs" registry maintained at
 &lt;<span><a href="https://www.iana.org/assignments/well-known-uris">https://www.iana.org/assignments/well-known-uris</a></span>&gt;.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
 <p id="section-10.2-2">IANA is requested to update the "Reference" field to include this
-document.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
+document in addition to previous values from that field.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlCompact dlParallel" id="section-10.2-3">
           <dt id="section-10.2-3.1">IANA is request to add the following sentence to the "Related Information"</dt>
           <dd style="margin-left: 1.5em" id="section-10.2-3.2">
