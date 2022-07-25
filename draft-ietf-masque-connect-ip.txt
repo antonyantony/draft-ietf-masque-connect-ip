@@ -5,12 +5,12 @@
 MASQUE                                                     T. Pauly, Ed.
 Internet-Draft                                                Apple Inc.
 Intended status: Standards Track                             D. Schinazi
-Expires: 25 January 2023                               A. Chernyakhovsky
+Expires: 26 January 2023                               A. Chernyakhovsky
                                                               Google LLC
                                                            M. Kuehlewind
                                                            M. Westerlund
                                                                 Ericsson
-                                                            24 July 2022
+                                                            25 July 2022
 
 
                       IP Proxying Support for HTTP
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 January 2023.
+   This Internet-Draft will expire on 26 January 2023.
 
 Copyright Notice
 
@@ -91,7 +91,8 @@ Table of Contents
    9.  Security Considerations
    10. IANA Considerations
      10.1.  CONNECT-IP HTTP Upgrade Token
-     10.2.  Capsule Type Registrations
+     10.2.  Updates to masque Well-Known URI
+     10.3.  Capsule Type Registrations
    11. References
      11.1.  Normative References
      11.2.  Informative References
@@ -145,6 +146,7 @@ Table of Contents
 
    Examples are shown below:
 
+   https://example.org/masque/{target}/{ipproto}/
    https://proxy.example.org:4443/masque/ip?t={target}&i={ipproto}
    https://proxy.example.org:4443/masque/ip{?target,ipproto}
    https://masque.example.org/?user=bob
@@ -165,7 +167,10 @@ Table of Contents
       of the URI.
 
    *  The URI template MAY contain the two variables "target" and
-      "ipproto" and MAY contain other variables.
+      "ipproto" and MAY contain other variables.  If the "target" and
+      "ipproto" variables are included as path components, their values
+      MUST NOT be empty, but instead use "*" to indicate wildcard or no-
+      preference values.
 
    *  The URI Template MUST NOT contain any non-ASCII unicode characters
       and MUST only contain ASCII characters in the range 0x21-0x7E
@@ -183,6 +188,16 @@ Table of Contents
    requirements above are not met by a URI Template, the client MUST
    reject its configuration and abort the request without sending it to
    the IP proxy.
+
+   As with CONNECT-UDP, some client configurations for CONNECT-IP
+   proxies will only allow the user to configure the proxy host and
+   proxy port.  Clients with such limitations MAY attempt to access IP
+   proxying capabilities using the default template, which is defined
+   as: "https://$PROXY_HOST:$PROXY_PORT/.well-known/masque/
+   udp/{target}/{ipproto}/", where $PROXY_HOST and $PROXY_PORT are the
+   configured host and port of the IP proxy, respectively.  IP proxy
+   deployments SHOULD offer service at this location if they need to
+   interoperate with such clients.
 
 4.  The CONNECT-IP Protocol
 
@@ -283,7 +298,7 @@ Table of Contents
 
 4.2.1.  ADDRESS_ASSIGN Capsule
 
-   The ADDRESS_ASSIGN capsule (see Section 10.2 for the value of the
+   The ADDRESS_ASSIGN capsule (see Section 10.3 for the value of the
    capsule type) allows an endpoint to inform its peer that it has
    assigned an IP address or prefix to it.  The ADDRESS_ASSIGN capsule
    allows assigning a prefix which can contain multiple addresses.  Any
@@ -330,7 +345,7 @@ Table of Contents
 
 4.2.2.  ADDRESS_REQUEST Capsule
 
-   The ADDRESS_REQUEST capsule (see Section 10.2 for the value of the
+   The ADDRESS_REQUEST capsule (see Section 10.3 for the value of the
    capsule type) allows an endpoint to request assignment of an IP
    address from its peer.  This capsule is not required for simple
    client/proxy communication where the client only expects to receive
@@ -363,7 +378,7 @@ Table of Contents
 
 4.2.3.  ROUTE_ADVERTISEMENT Capsule
 
-   The ROUTE_ADVERTISEMENT capsule (see Section 10.2 for the value of
+   The ROUTE_ADVERTISEMENT capsule (see Section 10.3 for the value of
    the capsule type) allows an endpoint to communicate to its peer that
    it is willing to route traffic to a set of IP address ranges.  This
    indicates that the sender has an existing route to each address
@@ -848,7 +863,21 @@ Table of Contents
    Expected Version Tokens:  None
    References:  This document
 
-10.2.  Capsule Type Registrations
+10.2.  Updates to masque Well-Known URI
+
+   This document will request IANA to update the entry for the "masque"
+   URI suffix in the "Well-Known URIs" registry maintained at
+   <https://www.iana.org/assignments/well-known-uris>.
+
+   IANA is requested to update the "Reference" field to include this
+   document.
+
+   IANA is request to add the following sentence to the "Related
+   Information"
+   field:  Includes all resources identified with the path prefix
+      "/.well-known/masque/ip/".
+
+10.3.  Capsule Type Registrations
 
    This document will request IANA to add the following values to the
    "HTTP Capsule Types" registry created by [HTTP-DGRAM]:

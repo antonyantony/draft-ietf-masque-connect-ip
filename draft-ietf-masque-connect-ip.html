@@ -1050,7 +1050,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Pauly, et al.</td>
-<td class="center">Expires 25 January 2023</td>
+<td class="center">Expires 26 January 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-masque-connect-ip-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-07-24" class="published">24 July 2022</time>
+<time datetime="2022-07-25" class="published">25 July 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-01-25">25 January 2023</time></dd>
+<dd class="expires"><time datetime="2023-01-26">26 January 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1136,7 +1136,7 @@ being limited to just TCP like CONNECT or UDP like CONNECT-UDP.<a href="#section
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1229,7 +1229,10 @@ being limited to just TCP like CONNECT or UDP like CONNECT-UDP.<a href="#section
                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-connect-ip-http-upgrade-tok" class="xref">CONNECT-IP HTTP Upgrade Token</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
-                <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-capsule-type-registrations" class="xref">Capsule Type Registrations</a></p>
+                <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-updates-to-masque-well-know" class="xref">Updates to masque Well-Known URI</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.3">
+                <p id="section-toc.1-1.10.2.3.1"><a href="#section-10.3" class="xref">10.3</a>.  <a href="#name-capsule-type-registrations" class="xref">Capsule Type Registrations</a></p>
 </li>
             </ul>
 </li>
@@ -1306,6 +1309,7 @@ works to exclude it in the syntax.<a href="#section-3-1" class="pilcrow">¶</a><
 <figure id="figure-1">
         <div class="alignLeft art-text artwork" id="section-3-3.1">
 <pre>
+https://example.org/masque/{target}/{ipproto}/
 https://proxy.example.org:4443/masque/ip?t={target}&amp;i={ipproto}
 https://proxy.example.org:4443/masque/ip{?target,ipproto}
 https://masque.example.org/?user=bob
@@ -1327,7 +1331,9 @@ authority and path components.<a href="#section-3-5.2" class="pilcrow">¶</a>
         <li class="normal" id="section-3-5.4">All template variables <span class="bcp14">MUST</span> be within the path or query components of the URI.<a href="#section-3-5.4" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-3-5.5">The URI template <span class="bcp14">MAY</span> contain the two variables "target" and "ipproto" and <span class="bcp14">MAY</span>
-contain other variables.<a href="#section-3-5.5" class="pilcrow">¶</a>
+contain other variables. If the "target" and "ipproto" variables are included
+as path components, their values <span class="bcp14">MUST NOT</span> be empty, but instead use "*" to
+indicate wildcard or no-preference values.<a href="#section-3-5.5" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-3-5.6">The URI Template <span class="bcp14">MUST NOT</span> contain any non-ASCII unicode characters and <span class="bcp14">MUST</span>
 only contain ASCII characters in the range 0x21-0x7E inclusive (note that
@@ -1344,6 +1350,13 @@ general-purpose URI Template implementation that lacks this specific validation.
 If a client detects that any of the requirements above are not met by a URI
 Template, the client <span class="bcp14">MUST</span> reject its configuration and abort the request without
 sending it to the IP proxy.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">As with CONNECT-UDP, some client configurations for CONNECT-IP proxies will only
+allow the user to configure the proxy host and proxy port. Clients with such limitations
+<span class="bcp14">MAY</span> attempt to access IP proxying capabilities using the default template, which is
+defined as: "https://$PROXY_HOST:$PROXY_PORT/.well-known/masque/udp/{target}/{ipproto}/",
+where $PROXY_HOST and $PROXY_PORT are the configured host and port of the IP proxy,
+respectively. IP proxy deployments <span class="bcp14">SHOULD</span> offer service at this location if they need
+to interoperate with such clients.<a href="#section-3-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-connect-ip-protocol">
@@ -1447,7 +1460,7 @@ these new capsules.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
           <h4 id="name-address_assign-capsule">
 <a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-address_assign-capsule" class="section-name selfRef">ADDRESS_ASSIGN Capsule</a>
           </h4>
-<p id="section-4.2.1-1">The ADDRESS_ASSIGN capsule (see <a href="#iana-types" class="xref">Section 10.2</a> for the value of the capsule
+<p id="section-4.2.1-1">The ADDRESS_ASSIGN capsule (see <a href="#iana-types" class="xref">Section 10.3</a> for the value of the capsule
 type) allows an endpoint to inform its peer that it has assigned an IP address
 or prefix to it. The ADDRESS_ASSIGN capsule allows assigning a prefix which can
 contain multiple addresses. Any of these addresses can be used as the source
@@ -1509,7 +1522,7 @@ need to send ADDRESS_ASSIGN capsules to allow their peers to send traffic.<a hre
           <h4 id="name-address_request-capsule">
 <a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-address_request-capsule" class="section-name selfRef">ADDRESS_REQUEST Capsule</a>
           </h4>
-<p id="section-4.2.2-1">The ADDRESS_REQUEST capsule (see <a href="#iana-types" class="xref">Section 10.2</a> for the value of the capsule
+<p id="section-4.2.2-1">The ADDRESS_REQUEST capsule (see <a href="#iana-types" class="xref">Section 10.3</a> for the value of the capsule
 type) allows an endpoint to request assignment of an IP address from its peer.
 This capsule is not required for simple client/proxy communication where the
 client only expects to receive one address from the proxy. The capsule allows
@@ -1562,7 +1575,7 @@ the peer of the assignment.<a href="#section-4.2.2-4" class="pilcrow">¶</a></p>
           <h4 id="name-route_advertisement-capsule">
 <a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-route_advertisement-capsule" class="section-name selfRef">ROUTE_ADVERTISEMENT Capsule</a>
           </h4>
-<p id="section-4.2.3-1">The ROUTE_ADVERTISEMENT capsule (see <a href="#iana-types" class="xref">Section 10.2</a> for the value of the capsule
+<p id="section-4.2.3-1">The ROUTE_ADVERTISEMENT capsule (see <a href="#iana-types" class="xref">Section 10.3</a> for the value of the capsule
 type) allows an endpoint to communicate to its peer that it is willing to route
 traffic to a set of IP address ranges. This indicates that the sender has an
 existing route to each address range, and notifies its peer that if the receiver
@@ -2245,13 +2258,37 @@ Token Registry maintained at
 </dl>
 </section>
 </div>
-<div id="iana-types">
+<div id="iana-uri">
 <section id="section-10.2">
-        <h3 id="name-capsule-type-registrations">
-<a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-capsule-type-registrations" class="section-name selfRef">Capsule Type Registrations</a>
+        <h3 id="name-updates-to-masque-well-know">
+<a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-updates-to-masque-well-know" class="section-name selfRef">Updates to masque Well-Known URI</a>
         </h3>
-<p id="section-10.2-1">This document will request IANA to add the following values to the "HTTP
-Capsule Types" registry created by <span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>:<a href="#section-10.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.2-1">This document will request IANA to update the entry for the "masque"
+URI suffix in the "Well-Known URIs" registry maintained at
+&lt;<span><a href="https://www.iana.org/assignments/well-known-uris">https://www.iana.org/assignments/well-known-uris</a></span>&gt;.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.2-2">IANA is requested to update the "Reference" field to include this
+document.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-10.2-3">
+          <dt id="section-10.2-3.1">IANA is request to add the following sentence to the "Related Information"</dt>
+          <dd style="margin-left: 1.5em" id="section-10.2-3.2">
+            <p id="section-10.2-3.2.1"></p><a href="#section-10.2-3.2" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-10.2-3.3">field:</dt>
+          <dd style="margin-left: 1.5em" id="section-10.2-3.4">
+            <p id="section-10.2-3.4.1">Includes all resources identified with the path prefix "/.well-known/masque/ip/".<a href="#section-10.2-3.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="iana-types">
+<section id="section-10.3">
+        <h3 id="name-capsule-type-registrations">
+<a href="#section-10.3" class="section-number selfRef">10.3. </a><a href="#name-capsule-type-registrations" class="section-name selfRef">Capsule Type Registrations</a>
+        </h3>
+<p id="section-10.3-1">This document will request IANA to add the following values to the "HTTP
+Capsule Types" registry created by <span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>:<a href="#section-10.3-1" class="pilcrow">¶</a></p>
 <span id="name-new-capsules"></span><div id="iana-capsules-table">
 <table class="center" id="table-1">
           <caption>
