@@ -359,7 +359,7 @@ Table of Contents
 
                   Figure 4: ADDRESS_REQUEST Capsule Format
 
-   The ADDRESS_ASSIGN capsule contains a sequence of Requested
+   The ADDRESS_REQUEST capsule contains a sequence of Requested
    Addresses.
 
    Requested Address {
