@@ -1591,7 +1591,9 @@ a specific address. In that scenario, the prefix length still indicates the
 sender's preference for the prefix length it is requesting.<a href="#section-4.2.2-6" class="pilcrow">¶</a></p>
 <p id="section-4.2.2-7">Upon receiving the ADDRESS_REQUEST capsule, an endpoint <span class="bcp14">SHOULD</span> assign an IP
 address to its peer, and then respond with an ADDRESS_ASSIGN capsule to inform
-the peer of the assignment.<a href="#section-4.2.2-7" class="pilcrow">¶</a></p>
+the peer of the assignment. Note that the receiver of the ADDRESS_REQUEST
+capsule is not required to assign the requested address, and that it can also
+assign some requested addresses but not others.<a href="#section-4.2.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="routeadvertisement-capsule">
