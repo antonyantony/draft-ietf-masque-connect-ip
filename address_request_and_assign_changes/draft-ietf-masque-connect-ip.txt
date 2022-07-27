@@ -5,12 +5,12 @@
 MASQUE                                                     T. Pauly, Ed.
 Internet-Draft                                                Apple Inc.
 Intended status: Standards Track                             D. Schinazi
-Expires: 27 January 2023                               A. Chernyakhovsky
+Expires: 28 January 2023                               A. Chernyakhovsky
                                                               Google LLC
                                                            M. Kuehlewind
                                                            M. Westerlund
                                                                 Ericsson
-                                                            26 July 2022
+                                                            27 July 2022
 
 
                       IP Proxying Support for HTTP
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 January 2023.
+   This Internet-Draft will expire on 28 January 2023.
 
 Copyright Notice
 
@@ -335,7 +335,7 @@ Table of Contents
    its own packets.  For example, in the Remote Access case
    (Section 8.1) the client cannot send IP packets until it knows what
    address to use.  In these deployments, the endpoint that is expecting
-   an address assignment MUST send an ADDRESS_ASSIGN capsule.  This
+   an address assignment MUST send an ADDRESS_REQUEST capsule.  This
    isn't required if the endpoint does not need any address assignment,
    for example when it is configured out-of-band with static addresses.
 
