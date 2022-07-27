@@ -1050,7 +1050,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Pauly, et al.</td>
-<td class="center">Expires 27 January 2023</td>
+<td class="center">Expires 28 January 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-masque-connect-ip-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-07-26" class="published">26 July 2022</time>
+<time datetime="2022-07-27" class="published">27 July 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-01-27">27 January 2023</time></dd>
+<dd class="expires"><time datetime="2023-01-28">28 January 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1136,7 +1136,7 @@ being limited to just TCP like CONNECT or UDP like CONNECT-UDP.<a href="#section
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 27 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1802,7 +1802,8 @@ administratively prohibited".<a href="#section-7-3.2" class="pilcrow">¶</a>
 If an endpoint sends ROUTE_ADVERTISEMENT capsules, its routes <span class="bcp14">SHOULD</span> include an allowance
 for receiving ICMP messages. If an endpoint does not send ROUTE_ADVERTISEMENT capsules,
 such as a client opening an IP flow through a proxy, it <span class="bcp14">SHOULD</span> process proxied ICMP packets
-from its peer in order to receive these errors.<a href="#section-7-4" class="pilcrow">¶</a></p>
+from its peer in order to receive these errors. Note that ICMP messages can originate from
+a source address different from that of the CONNECT-IP peer.<a href="#section-7-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="examples">

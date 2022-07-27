@@ -5,12 +5,12 @@
 MASQUE                                                     T. Pauly, Ed.
 Internet-Draft                                                Apple Inc.
 Intended status: Standards Track                             D. Schinazi
-Expires: 27 January 2023                               A. Chernyakhovsky
+Expires: 28 January 2023                               A. Chernyakhovsky
                                                               Google LLC
                                                            M. Kuehlewind
                                                            M. Westerlund
                                                                 Ericsson
-                                                            26 July 2022
+                                                            27 July 2022
 
 
                       IP Proxying Support for HTTP
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 January 2023.
+   This Internet-Draft will expire on 28 January 2023.
 
 Copyright Notice
 
@@ -578,7 +578,8 @@ Table of Contents
    messages.  If an endpoint does not send ROUTE_ADVERTISEMENT capsules,
    such as a client opening an IP flow through a proxy, it SHOULD
    process proxied ICMP packets from its peer in order to receive these
-   errors.
+   errors.  Note that ICMP messages can originate from a source address
+   different from that of the CONNECT-IP peer.
 
 8.  Examples
 
